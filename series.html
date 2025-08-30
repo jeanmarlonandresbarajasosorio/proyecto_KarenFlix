@@ -72,6 +72,63 @@
       font-size: 0.9rem;
       color: var(--muted);
     }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background: var(--card);
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+    header h1 { margin:0; }
+    nav a {
+      color: var(--accent);
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover { color: var(--accent-hover); }
+    main {
+      flex:1;
+      padding: 2rem;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--accent);
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+    .gallery img {
+      width: 100%;
+      height: 280px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    footer {
+      background: var(--card);
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
   </style>
 </head>
 <body>
@@ -85,11 +142,11 @@
     </nav>
   </header>
   </style>
-</head>
 <body>
   <header>
-    <h1>Series Clásicas y Modernas</h1>
-  </header>
+  <main>
+    <h2>Catálogo de Series</h2>
+    <section class="gallery"><!-- START: 100 imágenes funcionales de películas famosas -->
 
   <section class="gallery">
     <!-- 30 portadas de series -->
@@ -116,9 +173,5 @@
       <img loading="lazy" src="https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg" alt="The Matrix (1999)" onerror="imgFallback(this, 'The Matrix')">
       <!-- Fight Club -->
     
-
-  <footer>
-    © 2025 Tu App de Películas y Series Jean Marlon
-  </footer>
-</body>
+ </body>
 </html>
