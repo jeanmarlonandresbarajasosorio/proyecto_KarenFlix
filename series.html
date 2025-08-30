@@ -60,11 +60,15 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       object-fit: cover;
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
       cursor: pointer;
     }
     .gallery img:hover {
       transform: scale(1.05);
+    }
+    .gallery img.selected {
+      outline: 4px solid var(--accent);
+      box-shadow: 0 0 20px var(--accent);
     }
     footer {
       background: var(--card);
@@ -145,6 +149,7 @@
       <a href="index.html">Inicio</a>
       <a href="movies.html">Películas</a>
       <a href="series.html">Series</a>
+      <a href="anime.html">Anime</a>
       <a href="login.html">Login</a>
     </nav>
   </header>
@@ -152,11 +157,40 @@
   <main>
     <h2>Catálogo de Series</h2>
     <section class="gallery" id="movieGallery">
-      <img src="https://m.media-amazon.com/images/I/71niXI3lxlL._AC_SY679_.jpg" alt="Inception" onclick="selectMovie('Inception')">
-      <img src="https://image.tmdb.org/t/p/w500/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg" alt="Pulp Fiction" onclick="selectMovie('Pulp Fiction')">
-      <img src="https://image.tmdb.org/t/p/w500/saHP97rTPS5eLmrLQEcANmKrsFl.jpg" alt="Forrest Gump" onclick="selectMovie('Forrest Gump')">
-      <img src="https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg" alt="The Matrix" onclick="selectMovie('The Matrix')">
-      <img src="https://image.tmdb.org/t/p/w500/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg" alt="Titanic" onclick="selectMovie('Titanic')">
+      <!-- La Casa de Papel -->
+      <img loading="lazy" 
+          src="https://image.tmdb.org/t/p/w500/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg" 
+          alt="La Casa de Papel" 
+          onclick="selectMovie('La Casa de Papel', this)"
+          onerror="imgFallback(this, 'La Casa de Papel')">
+
+      <!-- Stranger Things -->
+      <img loading="lazy" 
+          src="https://image.tmdb.org/t/p/w500/x2LSRK2Cm7MZhjluni1msVJ3wDF.jpg" 
+          alt="Stranger Things" 
+          onclick="selectMovie('Stranger Things', this)"
+          onerror="imgFallback(this, 'Stranger Things')">
+
+      <!-- Breaking Bad -->
+      <img loading="lazy" 
+          src="https://image.tmdb.org/t/p/w500/ggFHVNu6YYI5L9pCfOacjizRGt.jpg" 
+          alt="Breaking Bad" 
+          onclick="selectMovie('Breaking Bad', this)"
+          onerror="imgFallback(this, 'Breaking Bad')">
+
+      <!-- Vikings -->
+      <img loading="lazy" 
+          src="https://image.tmdb.org/t/p/w500/bQLrHIRNEkE3PdIWQrZHynQZazu.jpg" 
+          alt="Vikings" 
+          onclick="selectMovie('Vikings', this)"
+          onerror="imgFallback(this, 'Vikings')">
+
+      <!-- Peaky Blinders -->
+      <img loading="lazy" 
+          src="https://image.tmdb.org/t/p/w500/bGZn5RVzMMXju4ev7xbl1aLdXqq.jpg" 
+          alt="Peaky Blinders" 
+          onclick="selectMovie('Peaky Blinders', this)"
+          onerror="imgFallback(this, 'Peaky Blinders')">
     </section>
 
     <section id="reviews">
@@ -189,15 +223,25 @@
     let currentMovie = null;
     let reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
 
-    function selectMovie(movie) {
+    function selectMovie(movie, imgElement) {
       currentMovie = movie;
       document.getElementById("selectedMovie").textContent = movie;
+
+      // Quitar selección anterior
+      document.querySelectorAll(".gallery img").forEach(img => img.classList.remove("selected"));
+      // Marcar selección actual
+      imgElement.classList.add("selected");
+
       renderReviews();
+    }
+
+    function imgFallback(img, title) {
+      img.src = "https://via.placeholder.com/300x450?text=" + encodeURIComponent(title);
     }
 
     document.getElementById("reviewForm").addEventListener("submit", e => {
       e.preventDefault();
-      if (!currentMovie) return alert("Selecciona una película primero.");
+      if (!currentMovie) return alert("Selecciona una serie primero.");
 
       const review = {
         id: Date.now(),

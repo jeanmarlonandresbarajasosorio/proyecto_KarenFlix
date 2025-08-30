@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PelisApp - Catálogo de Series</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --muted: #64748b;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --text: #e5e7eb;
+      --shadow: 0 10px 25px rgba(0,0,0,.35);
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background: var(--card);
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+    header h1 { margin:0; }
+    nav a {
+      color: var(--accent);
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover { color: var(--accent-hover); }
+    main {
+      flex:1;
+      padding: 2rem;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--accent);
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+    .gallery img {
+      width: 100%;
+      height: 280px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      object-fit: cover;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    footer {
+      background: var(--card);
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* Reseñas */
+    #reviews {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    #reviews h3 {
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+    form {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    form input, form textarea, form select {
+      padding: .7rem;
+      border-radius: var(--radius);
+      border: none;
+      outline: none;
+    }
+    form button {
+      padding: .7rem;
+      border: none;
+      border-radius: var(--radius);
+      background: var(--accent);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background .3s;
+    }
+    form button:hover { background: var(--accent-hover); }
+    .review {
+      background: #1e293b;
+      padding: 1rem;
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+    }
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .review-actions button {
+      margin-left: .5rem;
+      padding: .3rem .7rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .like { background: #22c55e; color:white; }
+    .dislike { background: #ef4444; color:white; }
+    .edit { background: #3b82f6; color:white; }
+    .delete { background: #f97316; color:white; }
+    .ranking {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: #1e293b;
+      border-radius: var(--radius);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>PelisApp</h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="movies.html">Películas</a>
+      <a href="series.html">Series</a>
+      <a href="anime.html">Anime</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Catálogo de Anime</h2>
+    <section class="gallery" id="movieGallery">
+<!-- ANIME IMÁGENES -->
+ <!-- ANIME EXTRA -->
+
+<img loading="lazy" 
+     src="https://image.tmdb.org/t/p/w500/nTvM4mhqNlHIvUkI1gVnW6XP7GG.jpg" 
+     alt="One Piece" 
+     onerror="imgFallback(this, 'One Piece')">
+
+<img loading="lazy" 
+     src="https://image.tmdb.org/t/p/w500/xYLBgw7dHyEqmcrSk2Sq3asuSq5.jpg" 
+     alt="Attack on Titan" 
+     onerror="imgFallback(this, 'Attack on Titan')">
+     <img loading="lazy" 
+     src="https://image.tmdb.org/t/p/w500/re3ZvlKJg04iLpLRf1xTKHS2wLU.jpg" 
+     alt="Fullmetal Alchemist: Brotherhood" 
+     onerror="imgFallback(this, 'Fullmetal Alchemist')">
+
+<img loading="lazy" 
+     src="https://image.tmdb.org/t/p/w500/8s4h9friP6Ci3adRGahHARVd76E.jpg" 
+     alt="Your Name" 
+     onerror="imgFallback(this, 'Your Name')">
+     <img loading="lazy" 
+
+ <img loading="lazy" 
+     src="https://image.tmdb.org/t/p/w500/qsdjk9oAKSQMWs0Vt5Pyfh6O4GZ.jpg" 
+     alt="Dragon Ball Z" 
+     onerror="imgFallback(this, 'Dragon Ball Z')">
+
+
+    </section>
+
+    <section id="reviews">
+      <h3>Reseñas de <span id="selectedMovie">[Selecciona una pecula Anime]</span></h3>
+      <form id="reviewForm">
+        <input type="text" id="reviewTitle" placeholder="Título de la reseña" required>
+        <textarea id="reviewComment" rows="3" placeholder="Escribe tu comentario..." required></textarea>
+        <select id="reviewRating" required>
+          <option value="">Calificación (1-10)</option>
+          <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+          <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+          <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+        <button type="submit">Agregar Reseña</button>
+      </form>
+      <div id="reviewList"></div>
+      <div class="ranking">
+        <h4>Ranking de Anime</h4>
+        <ol id="rankingList"></ol>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 PelisApp - Desarrollado Por: Jean Marlon Barajas Osorio
+  </footer>
+
+  <script>
+  let currentMovie = null;
+  let reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
+
+  function selectMovie(movie) {
+    currentMovie = movie;
+    document.getElementById("selectedMovie").textContent = movie;
+    renderReviews();
+  }
+
+  // --- Agregar selección de imágenes ---
+  function setupImageSelection() {
+    const imgs = document.querySelectorAll(".gallery img");
+    imgs.forEach(img => {
+      img.addEventListener("click", () => {
+        // Seleccionamos el anime por el atributo alt
+        selectMovie(img.alt);
+
+        // Resaltamos la seleccionada
+        imgs.forEach(i => i.style.border = "none");
+        img.style.border = "3px solid var(--accent)";
+      });
+    });
+  }
+
+  document.getElementById("reviewForm").addEventListener("submit", e => {
+    e.preventDefault();
+    if (!currentMovie) return alert("Selecciona una película primero.");
+
+    const review = {
+      id: Date.now(),
+      movie: currentMovie,
+      title: document.getElementById("reviewTitle").value,
+      comment: document.getElementById("reviewComment").value,
+      rating: parseInt(document.getElementById("reviewRating").value),
+      likes: 0,
+      dislikes: 0,
+      date: new Date().toISOString()
+    };
+    reviews.push(review);
+    localStorage.setItem("reviews", JSON.stringify(reviews));
+    e.target.reset();
+    renderReviews();
+  });
+
+  function renderReviews() {
+    const container = document.getElementById("reviewList");
+    container.innerHTML = "";
+    reviews.filter(r => r.movie === currentMovie).forEach(r => {
+      const div = document.createElement("div");
+      div.className = "review";
+      div.innerHTML = `
+        <div class="review-header">
+          <h4>${r.title} (${r.rating}/10)</h4>
+          <div class="review-actions">
+            <button class="like" onclick="likeReview(${r.id})">👍 ${r.likes}</button>
+            <button class="dislike" onclick="dislikeReview(${r.id})">👎 ${r.dislikes}</button>
+            <button class="edit" onclick="editReview(${r.id})">✏️</button>
+            <button class="delete" onclick="deleteReview(${r.id})">🗑️</button>
+          </div>
+        </div>
+        <p>${r.comment}</p>
+        <small>${new Date(r.date).toLocaleString()}</small>
+      `;
+      container.appendChild(div);
+    });
+    renderRanking();
+  }
+
+  function likeReview(id) {
+    let r = reviews.find(r => r.id === id);
+    if (r) r.likes++;
+    localStorage.setItem("reviews", JSON.stringify(reviews));
+    renderReviews();
+  }
+  function dislikeReview(id) {
+    let r = reviews.find(r => r.id === id);
+    if (r) r.dislikes++;
+    localStorage.setItem("reviews", JSON.stringify(reviews));
+    renderReviews();
+  }
+  function editReview(id) {
+    let r = reviews.find(r => r.id === id);
+    if (!r) return;
+    document.getElementById("reviewTitle").value = r.title;
+    document.getElementById("reviewComment").value = r.comment;
+    document.getElementById("reviewRating").value = r.rating;
+    deleteReview(id);
+  }
+  function deleteReview(id) {
+    reviews = reviews.filter(r => r.id !== id);
+    localStorage.setItem("reviews", JSON.stringify(reviews));
+    renderReviews();
+  }
+
+  function renderRanking() {
+    const scores = {};
+    reviews.forEach(r => {
+      const weight = r.rating + r.likes - r.dislikes + (new Date(r.date).getTime()/1e12);
+      scores[r.movie] = (scores[r.movie] || 0) + weight;
+    });
+    const ranking = Object.entries(scores).sort((a,b)=>b[1]-a[1]);
+    const list = document.getElementById("rankingList");
+    list.innerHTML = ranking.map(([m,s])=>`<li>${m} - Score: ${s.toFixed(2)}</li>`).join("");
+  }
+
+  // Inicializamos todo al cargar
+  setupImageSelection();
+  renderRanking();
+</script>
+
+  </script>
+</body>
+</html>
