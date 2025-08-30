@@ -14,9 +14,7 @@
        <a href="login.html">Login</a>
     </nav>
   </header>
-
-  <main class="container"></p>
-  </main>
+   </main>
 </body>
 </html>
 <!DOCTYPE html>
@@ -88,6 +86,120 @@
       <h2>Bienvenido a PelisApp</h2>
       <p>Explora las mejores películas y series desde una sola plataforma</p>
     </section>
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Películas</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #0a0f1c;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* 🎥 Banner estilo Netflix */
+    .banner {
+      position: relative;
+      width: 100%;
+      height: 90vh;
+      overflow: hidden;
+    }
+
+    .banner img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      animation: fadeZoom 30s infinite;
+    }
+
+    .banner img:nth-child(1) {
+      animation-delay: 0s;
+    }
+    .banner img:nth-child(2) {
+      animation-delay: 10s;
+    }
+    .banner img:nth-child(3) {
+      animation-delay: 20s;
+    }
+
+    @keyframes fadeZoom {
+      0% { opacity: 0; transform: scale(1); }
+      10% { opacity: 1; transform: scale(1.05); }
+      30% { opacity: 1; transform: scale(1.1); }
+      40% { opacity: 0; transform: scale(1.15); }
+      100% { opacity: 0; }
+    }
+
+    /* Overlay oscuro */
+    .banner-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.1));
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 60px;
+    }
+
+    .banner-overlay h1 {
+      font-size: 3rem;
+      margin: 0;
+      color: #fff;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+    }
+
+    .banner-overlay p {
+      max-width: 600px;
+      margin: 15px 0;
+      font-size: 1.2rem;
+      color: #ddd;
+    }
+
+    .banner-overlay button {
+      padding: 12px 24px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #e50914;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .banner-overlay button:hover {
+      background-color: #b20710;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🎥 Banner animado estilo Netflix -->
+  <section class="banner">
+    <!-- Imágenes de fondo -->
+    <img src="https://image.tmdb.org/t/p/original/qJ2tW6WMUDux911r6m7haRef0WH.jpg" alt="The Dark Knight">
+    <img src="https://image.tmdb.org/t/p/original/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg" alt="Inception">
+    <img src="https://image.tmdb.org/t/p/original/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" alt="Interstellar">
+
+    <!-- Overlay con info -->
+    <div class="banner-overlay">
+      <h1>Películas & Series</h1>
+      <p>Explora el mejor catálogo de películas y series, desde clásicos hasta los últimos estrenos.  
+      Disfruta de contenido exclusivo como si estuvieras en el cine.</p>
+      <button>Ver Ahora</button>
+    </div>
+  </section>
+
+</body>
+</html>
+
 
     <section class="gallery">
       <!-- The Godfather -->
@@ -104,9 +216,7 @@
 <img loading="lazy" src="https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg" alt="The Godfather (1972)" onerror="imgFallback(this, 'The Godfather')">
       <!-- The Shawshank Redemption -->
       <img loading="lazy" src="https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg" alt="The Shawshank Redemption (1994)" onerror="imgFallback(this, 'Shawshank Redemption')">
-      <!-- The Dark Knight -->
-      <img loading="lazy" src="https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg" alt="The Dark Knight (2008)" onerror="imgFallback(this, 'The Dark Knight')">
-      <!-- Pulp Fiction -->
+      <!-- The Dark Knight -->      <!-- Pulp Fiction -->
       <img loading="lazy" src="https://image.tmdb.org/t/p/w500/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg" alt="Pulp Fiction (1994)" onerror="imgFallback(this, 'Pulp Fiction')">
       <!-- Forrest Gump -->
       <img loading="lazy" src="https://image.tmdb.org/t/p/w500/saHP97rTPS5eLmrLQEcANmKrsFl.jpg" alt="Forrest Gump (1994)" onerror="imgFallback(this, 'Forrest Gump')">
