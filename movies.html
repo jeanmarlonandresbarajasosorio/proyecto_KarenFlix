@@ -61,6 +61,7 @@
       box-shadow: var(--shadow);
       object-fit: cover;
       transition: transform 0.3s;
+      cursor: pointer;
     }
     .gallery img:hover {
       transform: scale(1.05);
@@ -72,65 +73,210 @@
       font-size: 0.9rem;
       color: var(--muted);
     }
+
+    /* Reseñas */
+    #reviews {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    #reviews h3 {
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+    form {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    form input, form textarea, form select {
+      padding: .7rem;
+      border-radius: var(--radius);
+      border: none;
+      outline: none;
+    }
+    form button {
+      padding: .7rem;
+      border: none;
+      border-radius: var(--radius);
+      background: var(--accent);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background .3s;
+    }
+    form button:hover { background: var(--accent-hover); }
+    .review {
+      background: #1e293b;
+      padding: 1rem;
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+    }
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .review-actions button {
+      margin-left: .5rem;
+      padding: .3rem .7rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .like { background: #22c55e; color:white; }
+    .dislike { background: #ef4444; color:white; }
+    .edit { background: #3b82f6; color:white; }
+    .delete { background: #f97316; color:white; }
+    .ranking {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: #1e293b;
+      border-radius: var(--radius);
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1> PelisApp</h1>
+    <h1>PelisApp</h1>
     <nav>
       <a href="index.html">Inicio</a>
       <a href="movies.html">Películas</a>
-       <a href="series.html">Series</a>
-       <a href="login.html">Login</a>
+      <a href="series.html">Series</a>
+      <a href="login.html">Login</a>
     </nav>
   </header>
 
   <main>
     <h2>Catálogo de Películas</h2>
-    <section class="gallery"><!-- START: 100 imágenes funcionales de películas famosas -->
-
-      <img src="https://m.media-amazon.com/images/I/71niXI3lxlL._AC_SY679_.jpg" alt="Inception">
-      <img src="https://image.tmdb.org/t/p/w500/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg" alt="Pulp Fiction" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/300x450?text=Pulp+Fiction';">
-       <img src="https://image.tmdb.org/t/p/w500/uzERcfV2rSHNhW5eViQiO9hNiA7.jpg" alt="The Lion King" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/300x450?text=Lion+King';">
-       <img src="https://image.tmdb.org/t/p/w500/q719jXXEzOoYaps6babgKnONONX.jpg" alt="Spirited Away" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/300x450?text=Spirited+Away';">
-       <img src="https://image.tmdb.org/t/p/w500/kGzFbGhp99zva6oZODW5atUtnqi.jpg" alt="Goodfellas" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/300x450?text=Goodfellas';">
-       <img src="https://image.tmdb.org/t/p/w500/rSPw7tgCH9c6NqICZef4kZjFOQ5.jpg" alt="The Godfather" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/300x450?text=Godfather';">
-      <img loading="lazy" src="https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg" alt="The Godfather (1972)" onerror="imgFallback(this, 'The Godfather')">
-      <!-- The Shawshank Redemption -->
-      <img loading="lazy" src="https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg" alt="The Shawshank Redemption (1994)" onerror="imgFallback(this, 'Shawshank Redemption')">
-      <!-- The Dark Knight -->
-      <img loading="lazy" src="https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg" alt="The Dark Knight (2008)" onerror="imgFallback(this, 'The Dark Knight')">
-      <!-- Pulp Fiction -->
-      <img loading="lazy" src="https://image.tmdb.org/t/p/w500/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg" alt="Pulp Fiction (1994)" onerror="imgFallback(this, 'Pulp Fiction')">
-      <!-- Forrest Gump -->
-      <img loading="lazy" src="https://image.tmdb.org/t/p/w500/saHP97rTPS5eLmrLQEcANmKrsFl.jpg" alt="Forrest Gump (1994)" onerror="imgFallback(this, 'Forrest Gump')">
-      <!-- Inception -->
-      <img loading="lazy" src="https://image.tmdb.org/t/p/w500/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg" alt="Inception (2010)" onerror="imgFallback(this, 'Inception')">
-      <!-- Interstellar -->
-      <img loading="lazy" src="https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" alt="Interstellar (2014)" onerror="imgFallback(this, 'Interstellar')">
-      <!-- The Matrix -->
-      <img loading="lazy" src="https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg" alt="The Matrix (1999)" onerror="imgFallback(this, 'The Matrix')">
-      <!-- Fight Club -->
-      <img loading="lazy" src="https://image.tmdb.org/t/p/w500/a26cQPRhJPX6GbWfQbvZdrrp9j9.jpg" alt="Fight Club (1999)" onerror="imgFallback(this, 'Fight Club')">
-      <!-- The Lord of the Rings: The Fellowship of the Ring -->
-      <img loading="lazy" src="https://image.tmdb.org/t/p/w500/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg" alt="The Lord of the Rings: The Fellowship of the Ring (2001)" onerror="imgFallback(this, 'LOTR Fellowship')">
-      <!-- Star Wars: A New Hope -->
-      <img loading="lazy" src="https://image.tmdb.org/t/p/w500/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg" alt="Star Wars: A New Hope (1977)" onerror="imgFallback(this, 'Star Wars')">
-      <!-- The Avengers (2012) -->
-      <img loading="lazy" src="https://image.tmdb.org/t/p/w500/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg" alt="Marvel's The Avengers (2012)" onerror="imgFallback(this, 'The Avengers')">
-      <!-- Titanic (1997) -->
-      <img loading="lazy" src="https://image.tmdb.org/t/p/w500/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg" alt="Titanic (1997)" onerror="imgFallback(this, 'Titanic')">
-      <!-- Spirited Away (2001) -->
-      <img loading="lazy" src="https://image.tmdb.org/t/p/w500/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg" alt="Spirited Away (2001)" onerror="imgFallback(this, 'Spirited Away')">
-      <!-- Parasite (2019) -->
-      <img loading="lazy" src="https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg" alt="Parasite (2019)" onerror="imgFallback(this, 'Parasite')">
+    <section class="gallery" id="movieGallery">
+      <img src="https://m.media-amazon.com/images/I/71niXI3lxlL._AC_SY679_.jpg" alt="Inception" onclick="selectMovie('Inception')">
+      <img src="https://image.tmdb.org/t/p/w500/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg" alt="Pulp Fiction" onclick="selectMovie('Pulp Fiction')">
+      <img src="https://image.tmdb.org/t/p/w500/saHP97rTPS5eLmrLQEcANmKrsFl.jpg" alt="Forrest Gump" onclick="selectMovie('Forrest Gump')">
+      <img src="https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg" alt="The Matrix" onclick="selectMovie('The Matrix')">
+      <img src="https://image.tmdb.org/t/p/w500/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg" alt="Titanic" onclick="selectMovie('Titanic')">
     </section>
 
+    <section id="reviews">
+      <h3>Reseñas de <span id="selectedMovie">[Selecciona una película]</span></h3>
+      <form id="reviewForm">
+        <input type="text" id="reviewTitle" placeholder="Título de la reseña" required>
+        <textarea id="reviewComment" rows="3" placeholder="Escribe tu comentario..." required></textarea>
+        <select id="reviewRating" required>
+          <option value="">Calificación (1-10)</option>
+          <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+          <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+          <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+        <button type="submit">Agregar Reseña</button>
+      </form>
+      <div id="reviewList"></div>
+      <div class="ranking">
+        <h4>Ranking de Películas</h4>
+        <ol id="rankingList"></ol>
+      </div>
     </section>
   </main>
 
   <footer>
     © 2025 PelisApp - Desarrollado Por: Jean Marlon Barajas Osorio
   </footer>
+
+  <script>
+    let currentMovie = null;
+    let reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
+
+    function selectMovie(movie) {
+      currentMovie = movie;
+      document.getElementById("selectedMovie").textContent = movie;
+      renderReviews();
+    }
+
+    document.getElementById("reviewForm").addEventListener("submit", e => {
+      e.preventDefault();
+      if (!currentMovie) return alert("Selecciona una película primero.");
+
+      const review = {
+        id: Date.now(),
+        movie: currentMovie,
+        title: document.getElementById("reviewTitle").value,
+        comment: document.getElementById("reviewComment").value,
+        rating: parseInt(document.getElementById("reviewRating").value),
+        likes: 0,
+        dislikes: 0,
+        date: new Date().toISOString()
+      };
+      reviews.push(review);
+      localStorage.setItem("reviews", JSON.stringify(reviews));
+      e.target.reset();
+      renderReviews();
+    });
+
+    function renderReviews() {
+      const container = document.getElementById("reviewList");
+      container.innerHTML = "";
+      reviews.filter(r => r.movie === currentMovie).forEach(r => {
+        const div = document.createElement("div");
+        div.className = "review";
+        div.innerHTML = `
+          <div class="review-header">
+            <h4>${r.title} (${r.rating}/10)</h4>
+            <div class="review-actions">
+              <button class="like" onclick="likeReview(${r.id})">👍 ${r.likes}</button>
+              <button class="dislike" onclick="dislikeReview(${r.id})">👎 ${r.dislikes}</button>
+              <button class="edit" onclick="editReview(${r.id})">✏️</button>
+              <button class="delete" onclick="deleteReview(${r.id})">🗑️</button>
+            </div>
+          </div>
+          <p>${r.comment}</p>
+          <small>${new Date(r.date).toLocaleString()}</small>
+        `;
+        container.appendChild(div);
+      });
+      renderRanking();
+    }
+
+    function likeReview(id) {
+      let r = reviews.find(r => r.id === id);
+      if (r) r.likes++;
+      localStorage.setItem("reviews", JSON.stringify(reviews));
+      renderReviews();
+    }
+    function dislikeReview(id) {
+      let r = reviews.find(r => r.id === id);
+      if (r) r.dislikes++;
+      localStorage.setItem("reviews", JSON.stringify(reviews));
+      renderReviews();
+    }
+    function editReview(id) {
+      let r = reviews.find(r => r.id === id);
+      if (!r) return;
+      document.getElementById("reviewTitle").value = r.title;
+      document.getElementById("reviewComment").value = r.comment;
+      document.getElementById("reviewRating").value = r.rating;
+      deleteReview(id);
+    }
+    function deleteReview(id) {
+      reviews = reviews.filter(r => r.id !== id);
+      localStorage.setItem("reviews", JSON.stringify(reviews));
+      renderReviews();
+    }
+
+    function renderRanking() {
+      const scores = {};
+      reviews.forEach(r => {
+        const weight = r.rating + r.likes - r.dislikes + (new Date(r.date).getTime()/1e12);
+        scores[r.movie] = (scores[r.movie] || 0) + weight;
+      });
+      const ranking = Object.entries(scores).sort((a,b)=>b[1]-a[1]);
+      const list = document.getElementById("rankingList");
+      list.innerHTML = ranking.map(([m,s])=>`<li>${m} - Score: ${s.toFixed(2)}</li>`).join("");
+    }
+
+    renderRanking();
+  </script>
 </body>
 </html>
