@@ -321,46 +321,82 @@
     </table>
   </div>
 
-  <script>
+ <script>
     const movieForm = document.getElementById("movieForm");
     const movieTable = document.getElementById("movieTable").querySelector("tbody");
     const message = document.getElementById("message");
 
+    let editingRow = null;
+
+    // Agregar o actualizar película
     movieForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const title = document.getElementById("title").value;
       const description = document.getElementById("description").value;
       const image = document.getElementById("image").value;
 
-      if(title && description && image){
-        const row = document.createElement("tr");
-        row.innerHTML = `
-          <td>${title}</td>
-          <td>${description}</td>
-          <td><img src="${image}" width="60"></td>
-          <td>
-            <button class="edit">Editar</button>
-            <button class="delete">Eliminar</button>
-          </td>
-        `;
-        movieTable.appendChild(row);
-
-        message.textContent = "Película agregada correctamente.";
-        message.className = "message success";
-        message.style.display = "block";
-
+      if (title && description && image) {
+        if (editingRow) {
+          editingRow.cells[0].textContent = title;
+          editingRow.cells[1].textContent = description;
+          editingRow.cells[2].innerHTML = `<img src="${image}" width="60">`;
+          message.textContent = "Película editada correctamente ✅";
+          message.className = "message success";
+          message.style.display = "block";
+          editingRow = null;
+        } else {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${title}</td>
+            <td>${description}</td>
+            <td><img src="${image}" width="60"></td>
+            <td>
+              <button class="edit">Editar</button>
+              <button class="delete">Eliminar</button>
+            </td>
+          `;
+          movieTable.appendChild(row);
+          message.textContent = "Película agregada correctamente ✅";
+          message.className = "message success";
+          message.style.display = "block";
+        }
         movieForm.reset();
       } else {
-        message.textContent = "Por favor completa todos los campos.";
+        message.textContent = "⚠️ Por favor completa todos los campos.";
         message.className = "message error";
         message.style.display = "block";
       }
     });
 
-    function logout(){
-      alert("¿Desea Cerrar La Session?");
-      window.location.href = "login.html";
+    // Delegación de eventos editar/eliminar
+    movieTable.addEventListener("click", (e) => {
+      if (e.target.classList.contains("delete")) {
+        if (confirm("¿Seguro que deseas eliminar esta película?")) {
+          e.target.closest("tr").remove();
+          message.textContent = "Película eliminada ❌";
+          message.className = "message success";
+          message.style.display = "block";
+        }
+      }
+
+      if (e.target.classList.contains("edit")) {
+        const row = e.target.closest("tr");
+        document.getElementById("title").value = row.cells[0].textContent;
+        document.getElementById("description").value = row.cells[1].textContent;
+        document.getElementById("image").value = row.cells[2].querySelector("img").src;
+        editingRow = row;
+        message.textContent = "Editando película... ✏️";
+        message.className = "message success";
+        message.style.display = "block";
+      }
+    });
+
+    // Logout
+    function logout() {
+      if (confirm("¿Desea cerrar la sesión?")) {
+        window.location.href = "login.html";
+      }
     }
   </script>
 </body>
-</html>
+ </html>
