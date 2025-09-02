@@ -146,3 +146,4 @@ Guardada en localStorage.
 
 Proyecto desarrollado por Jean Marlon Andrés Barajas Osorio.
 
+DOCUMENTACION https://docs.google.com/document/d/1MH2bsyXxa80inNlDXc5ng5r2TOZ5_m8cx9tfaIakaB0/edit?usp=sharing
