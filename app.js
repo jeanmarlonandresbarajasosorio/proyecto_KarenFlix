@@ -13,6 +13,7 @@ import { seedCategorias } from "./src/seed/categoriaSeeder.js"; // 👈 nuevo
 import peliculaRoutes from "./src/routes/peliculaRoutes.js";
 import { seedPeliculas } from "./src/seed/peliculaSeeder.js";
 import resenaRoutes from "./src/routes/resenaRoutes.js";
+import { notificacionRoutes } from "./src/routes/notificacionRoutes.js";
 import path from "path";
 import { fileURLToPath } from "url";
 import { verificarToken } from "./src/middlewares/auth.js"; // tu middleware JWT
@@ -49,6 +50,7 @@ app.use("/usuarios", usuarioRoutes);
 app.use("/categorias", categoriaRoutes);
 app.use("/peliculas", peliculaRoutes);
 app.use("/resenas", resenaRoutes);
+app.use("/notificaciones", notificacionRoutes);
 
 app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "index.html"));

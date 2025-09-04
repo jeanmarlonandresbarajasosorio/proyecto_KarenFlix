@@ -1,6 +1,7 @@
 import { ObjectId } from "mongodb";
 import { getDB } from "../config/db.js";
 import { Resena } from "../models/Resena.js";
+import { crearNotificacion } from "./notificacionController.js";
 
 // Listar reseñas por película
 export const listarPorPelicula = async (req, res) => {
@@ -42,6 +43,7 @@ export const crearResena = async (req, res) => {
 
     await db.collection("resenas").insertOne(nuevaResena);
     res.status(201).json({ msg: "Reseña creada", reseña: nuevaResena });
+    crearNotificacion(nuevaResena._id)
   } catch (err) {
     res.status(500).json({ msg: "Error al crear reseña", error: err.message });
   }
